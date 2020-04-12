@@ -1,0 +1,66 @@
+@import "../../styles/colors.scss";
+
+.questionSummary {
+  padding: 10px;
+  color: $white;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  
+  .user {
+    .avatarImage {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto;
+    }
+
+    .userName {
+      width: 90px;
+      color: black;
+      text-align: center;
+      word-wrap: break-word;
+    }
+  }
+
+  .balloon {
+    flex-grow: 1;
+    text-decoration: none;
+    padding: 16px;
+    cursor: pointer;
+    margin-left: 15px;
+    border-radius: 15px;
+    position: relative;
+    color: $white;
+    background-color: $action-color;
+
+    &:after {
+      right: 100%;
+      top: 36px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(236, 136, 79, 0);
+      border-right-color: $action-color;
+      border-width: 10px;
+      margin-top: -10px;
+    }
+
+    .questionPrefix {
+      font-size: 14px;
+    }
+
+    .questionText {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: 500;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
