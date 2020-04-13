@@ -8,14 +8,14 @@ function HomePage({ unansweredQuestions, answeredQuestions }) {
 
   return (<div className='homePage'>
     <header>
-      <div className={`tabButton ${!showAnsweredQuestionsTab ? 'active': ''}`} onClick={() => setShowAnsweredQuestionsTab(false)}>Unanswered questions</div>
-      <div className={`tabButton ${showAnsweredQuestionsTab ? 'active': ''}`} onClick={() => setShowAnsweredQuestionsTab(true)}>Answered questions</div>
+      <div className={`tabButton ${!showAnsweredQuestionsTab ? 'active' : ''}`} onClick={() => setShowAnsweredQuestionsTab(false)}>Unanswered questions</div>
+      <div className={`tabButton ${showAnsweredQuestionsTab ? 'active' : ''}`} onClick={() => setShowAnsweredQuestionsTab(true)}>Answered questions</div>
     </header>
 
     {
       showAnsweredQuestionsTab && (<div>
         {
-          unansweredQuestions.map(
+          answeredQuestions.map(
             q => <QuestionSummary key={q.id} questionId={q.id} />
           )
         }
@@ -25,7 +25,7 @@ function HomePage({ unansweredQuestions, answeredQuestions }) {
     {
       !showAnsweredQuestionsTab && (<div>
         {
-          answeredQuestions.map(
+          unansweredQuestions.map(
             q => <QuestionSummary key={q.id} questionId={q.id} />
           )
         }
