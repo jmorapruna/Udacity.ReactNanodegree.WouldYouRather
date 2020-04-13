@@ -4,6 +4,7 @@ import './App.css'
 import { handleInitialData } from '../../actions/shared'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HomePage from '../HomePage/HomePage'
+import QuestionPage from '../QuestionPage/QuestionPage'
 
 class App extends Component {
 
@@ -22,6 +23,9 @@ class App extends Component {
               <Switch>
                 <Route exact path='/' >
                   <HomePage />
+                </Route>
+                <Route path='/question/:questionId'>
+                  <QuestionPage />
                 </Route>
               </Switch>
             )
