@@ -1,15 +1,35 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import UnansweredQuestionForm from '../UnansweredQuestionForm/UnansweredQuestionForm'
+import AnsweredQuestion from '../AnsweredQuestion/AnsweredQuestion'
 
-function QuestionPage() {
-  let { questionId } = useParams();
+function QuestionPage({ question, hasUserAnsweredQuestion }) {
 
   return (
     <div className='questionPage'>
-      <UnansweredQuestionForm questionId={questionId} />
+      {
+        hasUserAnsweredQuestion && <AnsweredQuestion question={question} />
+      }
+
+      {
+        !hasUserAnsweredQuestion && <UnansweredQuestionForm question={question} />
+      }
     </div>
   )
 }
 
-export default QuestionPage
+function mapStateToProps(state, props) {
+  const { questions, authedUserId, users } = state
+  const { questionId } = props.match.params
+
+  const question = questions[questionId]
+  const hasUserAnsweredQuestion = !!users[authedUserId].answers[questionId]
+
+  return {
+    question,
+    hasUserAnsweredQuestion
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(QuestionPage))

@@ -28,7 +28,7 @@ function saveQuestionAnswer(authedUserId, questionId, answeredOptionId) {
   }
 }
 
-export function handleSaveQuestionAnswer(questionId, answeredOptionId, cb) {
+export function handleSaveQuestionAnswer(questionId, answeredOptionId) {
   return (dispatch, getState) => {
     const { authedUserId } = getState()
 
@@ -38,6 +38,5 @@ export function handleSaveQuestionAnswer(questionId, answeredOptionId, cb) {
       answeredOptionId,
     })
       .then(() => dispatch(saveQuestionAnswer(authedUserId, questionId, answeredOptionId)))
-      .then(() => cb())
   }
 }
