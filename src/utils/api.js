@@ -1,4 +1,4 @@
-import { _getUsers, _getQuestions, _saveQuestionAnswer } from './_DATA'
+import { _getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion } from './_DATA'
 
 export function getApiInitialData() {
   return Promise.all([
@@ -7,10 +7,14 @@ export function getApiInitialData() {
   ])
 }
 
-export function saveApiQuestionAnswer({ authedUserId, questionId, answeredOptionId }) {
+export function saveApiQuestionAnswer(authedUserId, questionId, answeredOptionId) {
   return _saveQuestionAnswer({
     authedUser: authedUserId,
     qid: questionId,
     answer: answeredOptionId
   })
+}
+
+export function saveQuestion(question) {
+  return _saveQuestion(question)
 }

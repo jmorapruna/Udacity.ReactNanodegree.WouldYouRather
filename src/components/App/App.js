@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import './App.css'
 import { handleInitialData } from '../../actions/shared'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Nav from '../Nav/Nav'
 import HomePage from '../HomePage/HomePage'
 import QuestionPage from '../QuestionPage/QuestionPage'
+import NewQuestionForm from '../NewQuestionForm/NewQuestionForm'
 
 class App extends Component {
 
@@ -17,20 +19,22 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
-          {
-            !loading && (
-              <Switch>
-                <Route exact path='/' >
-                  <HomePage />
-                </Route>
-                <Route path='/question/:questionId'>
-                  <QuestionPage />
-                </Route>
-              </Switch>
-            )
-          }
-        </div>
+        <Nav />
+        {
+          !loading && (
+            <Switch>
+              <Route exact path='/' >
+                <HomePage />
+              </Route>
+              <Route path='/question/:questionId'>
+                <QuestionPage />
+              </Route>
+              <Route path='/new' >
+                <NewQuestionForm />
+              </Route>
+            </Switch>
+          )
+        }
       </Router>
     )
   }

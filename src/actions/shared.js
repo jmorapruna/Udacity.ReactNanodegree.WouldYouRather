@@ -32,11 +32,11 @@ export function handleSaveQuestionAnswer(questionId, answeredOptionId) {
   return (dispatch, getState) => {
     const { authedUserId } = getState()
 
-    return saveApiQuestionAnswer({
+    return saveApiQuestionAnswer(
       authedUserId,
       questionId,
-      answeredOptionId,
-    })
+      answeredOptionId
+    )
       .then(() => dispatch(saveQuestionAnswer(authedUserId, questionId, answeredOptionId)))
   }
 }

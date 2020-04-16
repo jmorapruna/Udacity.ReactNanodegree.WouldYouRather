@@ -13,7 +13,7 @@ function AnsweredQuestion({ userName, avatarURL, options }) {
 
       {
         options.map(option => (
-          <div>
+          <div key={option.text}>
             <p>{option.text}</p>
             <p>{option.votes} out of {totalVotes} votes</p>
             {option.votedByAuthedUser && <p>(you voted this answer!)</p>}
