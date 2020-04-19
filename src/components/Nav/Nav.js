@@ -6,6 +6,7 @@ function Nav() {
     <nav>
       <Link to='/'>Home</Link>
       <Link to='/new'>New question</Link>
+      <Link to='/leaderboard'>Leader board</Link>
     </nav>
   )
 }

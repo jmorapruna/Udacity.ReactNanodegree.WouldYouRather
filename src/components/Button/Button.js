@@ -1,9 +1,13 @@
 import React from 'react'
 
-function Button({ children, buttonWasClicked }) {
-  return (<button onClick={buttonWasClicked}>
-    {children}
-  </button>)
+function Button({ children, isDisabled = false, buttonWasClicked }) {
+  return (
+    <button
+      onClick={buttonWasClicked}
+      disabled={isDisabled}>
+      {children}
+    </button>
+  )
 }
 
 export default Button

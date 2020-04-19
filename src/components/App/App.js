@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav'
 import HomePage from '../HomePage/HomePage'
 import QuestionPage from '../QuestionPage/QuestionPage'
 import NewQuestionForm from '../NewQuestionForm/NewQuestionForm'
+import LeaderBoard from '../LeaderBoard/LeaderBoard'
 
 class App extends Component {
 
@@ -31,6 +32,9 @@ class App extends Component {
               </Route>
               <Route path='/new' >
                 <NewQuestionForm />
+              </Route>
+              <Route path='/leaderboard'>
+                <LeaderBoard />
               </Route>
             </Switch>
           )

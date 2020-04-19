@@ -50,7 +50,9 @@ function NewQuestionForm({ dispatch }) {
         value={formValue[FIELD_OPTION_TWO]}
         onChange={handleInputChange}></input>
 
-      <Button buttonWasClicked={handleButtonWasClicked}>Submit</Button>
+      <Button
+        buttonWasClicked={handleButtonWasClicked}
+      >Submit</Button>
     </div>
   )
 }
