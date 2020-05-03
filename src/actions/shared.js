@@ -1,12 +1,10 @@
 import { getApiInitialData } from '../utils/api'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
-import { setAuthedUserId } from './authedUserId'
 import { saveApiQuestionAnswer } from '../utils/api'
+import { setLoading } from '../actions/loading'
 
 export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
-
-const AUTHED_USER_ID = 'tylermcginnis'
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -14,7 +12,7 @@ export function handleInitialData() {
       .then(([users, questions]) => {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
-        dispatch(setAuthedUserId(AUTHED_USER_ID))
+        dispatch(setLoading(false))
       })
   }
 }

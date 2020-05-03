@@ -8,6 +8,24 @@ import HomePage from '../HomePage/HomePage'
 import QuestionPage from '../QuestionPage/QuestionPage'
 import NewQuestionForm from '../NewQuestionForm/NewQuestionForm'
 import LeaderBoard from '../LeaderBoard/LeaderBoard'
+import LoginPage from '../LoginPage/LoginPage'
+
+const Authenticated = () => (
+  <Switch>
+    <Route exact path='/' >
+      <HomePage />
+    </Route>
+    <Route path='/question/:questionId'>
+      <QuestionPage />
+    </Route>
+    <Route path='/new' >
+      <NewQuestionForm />
+    </Route>
+    <Route path='/leaderboard'>
+      <LeaderBoard />
+    </Route>
+  </Switch>
+)
 
 class App extends Component {
 
@@ -16,27 +34,15 @@ class App extends Component {
   }
 
   render() {
-    const { loading } = this.props
-
+    const { isUserAuthenticated, loading } = this.props
     return (
       <Router>
         <Nav />
         {
           !loading && (
-            <Switch>
-              <Route exact path='/' >
-                <HomePage />
-              </Route>
-              <Route path='/question/:questionId'>
-                <QuestionPage />
-              </Route>
-              <Route path='/new' >
-                <NewQuestionForm />
-              </Route>
-              <Route path='/leaderboard'>
-                <LeaderBoard />
-              </Route>
-            </Switch>
+            isUserAuthenticated
+              ? <Authenticated />
+              : <LoginPage />
           )
         }
       </Router>
@@ -44,9 +50,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUserId }) {
+function mapStateToProps({ authedUserId, loading }) {
   return {
-    loading: !authedUserId
+    isUserAuthenticated: !!authedUserId,
+    loading,
   }
 }
 
