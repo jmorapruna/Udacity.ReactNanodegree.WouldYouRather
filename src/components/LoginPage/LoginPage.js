@@ -6,14 +6,13 @@ import { setAuthedUserId } from '../../actions/authedUserId'
 import { withRouter } from 'react-router-dom'
 import './LoginPage.scss'
 
-function LoginPage({ users, dispatch, history }) {
+function LoginPage({ users, dispatch }) {
   const [selectedUserId, setSelectedUserId] = useState(null)
   const [showMissingUserError, setShowMissingUserError] = useState(false)
 
   function handleLoginButtonWasClicked() {
     if (selectedUserId) {
       dispatch(setAuthedUserId(selectedUserId))
-      history.push('/')
     } else {
       setShowMissingUserError(true)
     }

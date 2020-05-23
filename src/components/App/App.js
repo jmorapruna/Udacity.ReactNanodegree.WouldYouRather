@@ -8,25 +8,9 @@ import HomePage from '../HomePage/HomePage'
 import QuestionPage from '../QuestionPage/QuestionPage'
 import NewQuestionForm from '../NewQuestionForm/NewQuestionForm'
 import LeaderBoard from '../LeaderBoard/LeaderBoard'
-import LoginPage from '../LoginPage/LoginPage'
 import LoadingCircle from '../LoadingCircle/LoadingCircle'
-
-const Authenticated = () => (
-  <Switch>
-    <Route exact path='/' >
-      <HomePage />
-    </Route>
-    <Route path='/question/:questionId'>
-      <QuestionPage />
-    </Route>
-    <Route path='/add' >
-      <NewQuestionForm />
-    </Route>
-    <Route path='/leaderboard'>
-      <LeaderBoard />
-    </Route>
-  </Switch>
-)
+import PageOrLogin from '../PageOrLogin/PageOrLogin'
+import NotFound from '../NotFound/NotFound'
 
 class App extends Component {
 
@@ -35,20 +19,42 @@ class App extends Component {
   }
 
   render() {
-    const { isUserAuthenticated, loading } = this.props
+    const { loading } = this.props
 
-    const ActivePage = isUserAuthenticated
-      ? <Authenticated />
-      : <LoginPage />
+    const Page = loading
+      ? <LoadingCircle />
+      : (
+        <Switch>
+          <Route exact path='/' >
+            <PageOrLogin>
+              <HomePage />
+            </PageOrLogin>
+          </Route>
+          <Route path='/question/:questionId'>
+            <PageOrLogin>
+              <QuestionPage />
+            </PageOrLogin>
+          </Route>
+          <Route path='/add' >
+            <PageOrLogin>
+              <NewQuestionForm />
+            </PageOrLogin>
+          </Route>
+          <Route path='/leaderboard'>
+            <PageOrLogin>
+              <LeaderBoard />
+            </PageOrLogin>
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
+      )
 
     return (
       <Router>
         <Nav />
-        {
-          loading
-            ? <LoadingCircle />
-            : ActivePage
-        }
+        {Page}
       </Router>
     )
   }
