@@ -1,0 +1,51 @@
+.answeredQuestion {
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+    }
+
+    .asksText {
+      font-size: 26px;
+      font-weight: 500;
+    }
+  }
+
+  .optionText {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+
+  .wouldYouRather {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .option:not(:last-child) {
+    margin-bottom: 25px;
+  }
+
+  .percentageAvatarWrap {
+    position: relative;
+    .avatar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .votesText {
+    font-weight: 500;
+  }
+}

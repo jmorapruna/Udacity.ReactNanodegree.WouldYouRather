@@ -1,0 +1,36 @@
+.percentageBar {
+  position: relative;
+  margin: 10px 0;
+  background-color: #393d67;
+
+  &,
+  .activeBar {
+    height: 30px;
+    border-radius: 15px;
+  }
+
+  .activeBar {
+    background-color: #5666f3;
+    width: 25%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &.activeBar100 {
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+  }
+
+  .numberWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .number {
+      font-weight: 600;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+}

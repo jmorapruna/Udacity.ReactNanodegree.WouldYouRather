@@ -3,33 +3,41 @@ import { connect } from 'react-redux'
 import Button from '../Button/Button'
 import RadioOptions from '../RadioOptions/RadioOptions'
 import { handleSaveQuestionAnswer } from '../../actions/shared'
+import './UnansweredQuestionForm.scss'
 
 function UnansweredQuestionForm({ question, user, dispatch }) {
 
-  const handleSubmitButtonClick = () => {
+  const handleAnswerButtonClick = () => {
+    setIsLoading(true)
     dispatch(handleSaveQuestionAnswer(question.id, selectedOptionId))
   }
 
   const [selectedOptionId, setSelectedOptionId] = useState('optionOne')
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <div>
-      Would you rather...
-
-      <div>
-        <img src={user.avatarURL} alt={`${user.name} profile`} />
-        <p>{user.name}</p>
+    <div className='unansweredQuestionForm'>
+      <div className='user'>
+        <img src={user.avatarURL} alt={`${user.name} profile`} className='avatar' />
+        <p className='asksText'>{user.name} asks:</p>
       </div>
 
-      <RadioOptions
-        options={[
-          { text: question.optionOne.text, id: 'optionOne' },
-          { text: question.optionTwo.text, id: 'optionTwo' }
-        ]}
-        checkedOptionId={selectedOptionId}
-        checkedOptionIdChanged={setSelectedOptionId} />
+      <p className='title'>Would you rather...</p>
 
-      <Button buttonWasClicked={handleSubmitButtonClick}>Submit</Button>
+      <div className='options'>
+        <RadioOptions
+          options={[
+            { text: question.optionOne.text, id: 'optionOne' },
+            { text: question.optionTwo.text, id: 'optionTwo' }
+          ]}
+          checkedOptionId={selectedOptionId}
+          checkedOptionIdChanged={setSelectedOptionId} />
+      </div>
+
+      <Button
+        buttonWasClicked={handleAnswerButtonClick}
+        isLoading={isLoading}
+        className='button'>Answer</Button>
     </div>
   )
 }

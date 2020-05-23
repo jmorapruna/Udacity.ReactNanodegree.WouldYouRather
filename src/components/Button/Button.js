@@ -1,12 +1,18 @@
 import React from 'react'
+import './Button.scss'
 
-function Button({ children, isDisabled = false, buttonWasClicked }) {
+function Button({ children, isDisabled = false, isLoading = false, buttonWasClicked }) {
   return (
-    <button
-      onClick={buttonWasClicked}
+    <div
+      className='button'
+      onClick={() => !isLoading && buttonWasClicked()}
       disabled={isDisabled}>
-      {children}
-    </button>
+      {
+        isLoading
+          ? <div className='loadingSpinner' />
+          : children
+      }
+    </div>
   )
 }
 

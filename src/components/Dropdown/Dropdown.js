@@ -16,24 +16,37 @@ function Dropdown({ options, placeholder, anOptionWasSelected }) {
     anOptionWasSelected(option)
   }
 
-  const selectionText = selectedOption ? selectedOption.text : placeholder
+  const shownOptions = selectedOption ? options.filter(o => o.key !== selectedOption.key) : options
 
   return (
-    <div className='mm-dropdown' ref={dropdownRef}>
-      <div className='textfirst' onClick={() => setIsOpen(!isOpen)}>
-        {selectionText} <MdKeyboardArrowDown className='down' />
+    <div className='dropdown' ref={dropdownRef}>
+      <div className='selectedOption' onClick={() => setIsOpen(!isOpen)}>
+        {
+          selectedOption
+            ? (
+              <>
+                <img className='image' src={selectedOption.imageURL} alt={selectedOption.text} />
+                <span className='text'>{selectedOption.text}</span>
+              </>
+            )
+            : (
+              <span className='text'>{placeholder}</span>
+            )
+        }
+        <div className='gap'></div>
+        <MdKeyboardArrowDown className='arrow' />
       </div>
       {
         isOpen && (
           <ul>
             {
-              options.map((option) => {
+              shownOptions.map((option) => {
                 const { key, text, imageURL } = option
 
                 return (
-                  <li key={key} className='input-option' onClick={() => handleOptionWasClicked(option)}>
-                    <img src={imageURL} width='40' height='40' alt={text} />
-                    <span>{text}</span>
+                  <li key={key} onClick={() => handleOptionWasClicked(option)}>
+                    <img className='image' src={imageURL} alt={text} />
+                    <span className='text'>{text}</span>
                   </li>
                 )
               })

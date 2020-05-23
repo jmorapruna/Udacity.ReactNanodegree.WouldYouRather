@@ -1,0 +1,95 @@
+.leaderBoardUser {
+  background-color: #303038;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  & {
+    margin-bottom: 30px;
+  }
+
+  .images {
+    position: relative;
+    max-width: 275px;
+    margin: 0 auto;
+
+    .medal {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+    }
+
+    .avatar {
+      width: 171px;
+      height: 171px;
+    }
+
+    .score-ball {
+      position: absolute;
+      top: 25px;
+      left: 145px;
+    }
+  }
+
+  .scores {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .userName {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .ball {
+    color: #ededee;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 120px;
+    height: 120px;
+
+    &.answered-questions, &.created-questions {
+      width: 130px;
+      height: 130px;
+      font-size: 18px;
+      font-weight: 700;
+      background-color: #ededee;
+    }
+
+    &.answered-questions {
+      background-color: #ffb428;
+    }
+
+    &.created-questions {
+      background-color: #50d890;
+    }
+
+    &.score {
+      font-size: 28px;
+      font-weight: 600;
+      background-color: #ededee;
+      background-color: #5666f3;
+    }
+
+    .number {
+      font-size: 38px;
+      line-height: 38px;
+      margin-bottom: 4px;
+    }
+
+    .text {
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+}

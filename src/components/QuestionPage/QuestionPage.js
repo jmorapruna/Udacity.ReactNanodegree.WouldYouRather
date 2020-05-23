@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import './QuestionPage.scss'
 import UnansweredQuestionForm from '../UnansweredQuestionForm/UnansweredQuestionForm'
 import AnsweredQuestion from '../AnsweredQuestion/AnsweredQuestion'
 
@@ -9,11 +10,9 @@ function QuestionPage({ question, hasUserAnsweredQuestion }) {
   return (
     <div className='questionPage'>
       {
-        hasUserAnsweredQuestion && <AnsweredQuestion question={question} />
-      }
-
-      {
-        !hasUserAnsweredQuestion && <UnansweredQuestionForm question={question} />
+        hasUserAnsweredQuestion
+        ? <AnsweredQuestion question={question} />
+        : <UnansweredQuestionForm question={question} />
       }
     </div>
   )

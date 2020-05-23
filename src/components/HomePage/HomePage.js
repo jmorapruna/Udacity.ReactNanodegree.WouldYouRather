@@ -7,29 +7,27 @@ function HomePage({ unansweredQuestions, answeredQuestions }) {
   const [showAnsweredQuestionsTab, setShowAnsweredQuestionsTab] = useState(false)
 
   return (<div className='homePage'>
+    <h1>What's people asking?</h1>
+
     <header>
       <div className={`tabButton ${!showAnsweredQuestionsTab ? 'active' : ''}`} onClick={() => setShowAnsweredQuestionsTab(false)}>Unanswered questions</div>
       <div className={`tabButton ${showAnsweredQuestionsTab ? 'active' : ''}`} onClick={() => setShowAnsweredQuestionsTab(true)}>Answered questions</div>
     </header>
 
     {
-      showAnsweredQuestionsTab && (<div>
-        {
-          answeredQuestions.map(
+      showAnsweredQuestionsTab
+        ? (
+          <div>
+            {answeredQuestions.map(
+              q => <QuestionSummary key={q.id} questionId={q.id} />
+            )}
+          </div>
+        )
+        : (<div>
+          {unansweredQuestions.map(
             q => <QuestionSummary key={q.id} questionId={q.id} />
-          )
-        }
-      </div>)
-    }
-
-    {
-      !showAnsweredQuestionsTab && (<div>
-        {
-          unansweredQuestions.map(
-            q => <QuestionSummary key={q.id} questionId={q.id} />
-          )
-        }
-      </div>)
+          )}
+        </div>)
     }
   </div>)
 }

@@ -1,0 +1,107 @@
+.navbar {
+  font-size: 18px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.mainNav {
+  list-style-type: none;
+  display: none;
+
+  &.active {
+    display: block;
+    margin-top: 30px;
+  }
+
+  li {
+    text-align: center;
+    margin: 15px auto;
+  }
+}
+
+.navLink,
+.logo {
+  cursor: pointer;
+}
+
+.navLink,
+.logo,
+.userNavItem {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.logo {
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.navbarToggle {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 24px;
+}
+
+.logo:hover,
+.navLink:hover,
+.navLink.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+.userNavItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 26px;
+    height: 26px;
+    margin-left: -26px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
+  }
+
+  .mainNav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    li {
+      margin: 0;
+    }
+  }
+
+  .navLink,
+  .userNavItem {
+    margin-right: 40px;
+  }
+
+  .logo {
+    margin-top: 0;
+  }
+
+  .navbarToggle {
+    display: none;
+  }
+
+  .userNavItem {
+    img {
+      margin-left: 0;
+    }
+  }
+}

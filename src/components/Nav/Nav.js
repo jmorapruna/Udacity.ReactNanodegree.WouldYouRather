@@ -1,19 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { setAuthedUserId } from '../../actions/authedUserId'
+import { FaBars } from 'react-icons/fa'
+import './Nav.scss'
 
 function Nav({ user, dispatch }) {
-  return (
-    <nav>
-      <Link to='/'>Home</Link>
-      <Link to='/new'>New question</Link>
-      <Link to='/leaderboard'>Leader board</Link>
 
-      {user && <div>
-        <p>{user.name}</p>
-        <p onClick={() => dispatch(setAuthedUserId(null))}>Logout</p>
-      </div>}
+  const [isMobileNavVisible, setIsMobileNavVisible] = useState(false)
+
+  const navClassName = isMobileNavVisible ? 'mainNav active' : 'mainNav'
+
+  const handleLogout = () => {
+    dispatch(setAuthedUserId(null))
+    setIsMobileNavVisible(false)
+  }
+
+  return (
+    <nav className='navbar'>
+      <span className='navbarToggle' onClick={() => setIsMobileNavVisible(!isMobileNavVisible)}>
+        <FaBars />
+      </span>
+
+      <Link to='/' className='logo'>Would you rather...</Link>
+      <ul className={navClassName}>
+
+        {
+          user &&
+          <li>
+            <span className='userNavItem'>
+              <img src={user.avatarURL} alt='avatar' />
+                {user.name}
+            </span>
+          </li>
+        }
+
+        <li>
+          <NavLink exact to='/' className='navLink' activeClassName='active' onClick={() => setIsMobileNavVisible(false)}>Home</NavLink>
+        </li>
+        <li>
+          <NavLink exact to='/add' className='navLink' activeClassName='active' onClick={() => setIsMobileNavVisible(false)}>New question</NavLink>
+        </li>
+        <li>
+          <NavLink exact to='/leaderboard' className='navLink' activeClassName='active' onClick={() => setIsMobileNavVisible(false)}>Leader board</NavLink>
+        </li>
+
+        {
+          user &&
+          <>
+            <li>
+              <p className='navLink' onClick={handleLogout}>Logout</p>
+            </li>
+          </>
+        }
+      </ul>
+
     </nav>
   )
 }

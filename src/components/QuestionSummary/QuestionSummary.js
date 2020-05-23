@@ -14,7 +14,7 @@ function QuestionSummary({
         <p className='userName'>{userName}</p>
       </div>
       <Link to={`/question/${questionId}`} className='balloon'>
-        <p className='questionPrefix'>Would yot rather...</p>
+        <p className='questionPrefix'>Would yot rather</p>
         <p className='questionText'>{questionText} or...</p>
       </Link>
     </div>

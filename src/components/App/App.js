@@ -9,6 +9,7 @@ import QuestionPage from '../QuestionPage/QuestionPage'
 import NewQuestionForm from '../NewQuestionForm/NewQuestionForm'
 import LeaderBoard from '../LeaderBoard/LeaderBoard'
 import LoginPage from '../LoginPage/LoginPage'
+import LoadingCircle from '../LoadingCircle/LoadingCircle'
 
 const Authenticated = () => (
   <Switch>
@@ -18,7 +19,7 @@ const Authenticated = () => (
     <Route path='/question/:questionId'>
       <QuestionPage />
     </Route>
-    <Route path='/new' >
+    <Route path='/add' >
       <NewQuestionForm />
     </Route>
     <Route path='/leaderboard'>
@@ -35,15 +36,18 @@ class App extends Component {
 
   render() {
     const { isUserAuthenticated, loading } = this.props
+
+    const ActivePage = isUserAuthenticated
+      ? <Authenticated />
+      : <LoginPage />
+
     return (
       <Router>
         <Nav />
         {
-          !loading && (
-            isUserAuthenticated
-              ? <Authenticated />
-              : <LoginPage />
-          )
+          loading
+            ? <LoadingCircle />
+            : ActivePage
         }
       </Router>
     )
