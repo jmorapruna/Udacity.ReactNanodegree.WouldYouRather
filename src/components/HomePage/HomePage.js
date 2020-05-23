@@ -3,6 +3,18 @@ import { connect } from 'react-redux'
 import QuestionSummary from '../QuestionSummary/QuestionSummary'
 import './HomePage.scss'
 
+const QuestionsList = ({ questions, children }) => (
+  <div>
+    {
+      questions.length === 0
+        ? <div className='emptyContent'>{children}</div>
+        : questions.map(
+          q => <QuestionSummary key={q.id} questionId={q.id} />
+        )
+    }
+  </div>
+)
+
 function HomePage({ unansweredQuestions, answeredQuestions }) {
   const [showAnsweredQuestionsTab, setShowAnsweredQuestionsTab] = useState(false)
 
@@ -16,18 +28,8 @@ function HomePage({ unansweredQuestions, answeredQuestions }) {
 
     {
       showAnsweredQuestionsTab
-        ? (
-          <div>
-            {answeredQuestions.map(
-              q => <QuestionSummary key={q.id} questionId={q.id} />
-            )}
-          </div>
-        )
-        : (<div>
-          {unansweredQuestions.map(
-            q => <QuestionSummary key={q.id} questionId={q.id} />
-          )}
-        </div>)
+        ? <QuestionsList questions={answeredQuestions}>You have not answered any question yet, take a look at the "unanswered questions" tab.</QuestionsList>
+        : <QuestionsList questions={unansweredQuestions}>You're all set, there aren't any questions left to answer.</QuestionsList>
     }
   </div>)
 }
