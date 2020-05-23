@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './App.css'
 import { handleInitialData } from '../../actions/shared'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from '../Nav/Nav'
