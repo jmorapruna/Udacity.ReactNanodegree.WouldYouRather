@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 import { connect } from 'react-redux'
-import { handleCreateQuestion } from '../../actions/questions'
+import { handleCreateQuestion } from '../../actions/shared'
 import { withRouter } from 'react-router-dom'
 import './NewQuestionForm.scss'
 
