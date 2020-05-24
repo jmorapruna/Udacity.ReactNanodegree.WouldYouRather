@@ -8,7 +8,7 @@ import QuestionPage from '../QuestionPage/QuestionPage'
 import NewQuestionForm from '../NewQuestionForm/NewQuestionForm'
 import LeaderBoard from '../LeaderBoard/LeaderBoard'
 import LoadingCircle from '../LoadingCircle/LoadingCircle'
-import PageOrLogin from '../PageOrLogin/PageOrLogin'
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import NotFound from '../NotFound/NotFound'
 
 class App extends Component {
@@ -24,26 +24,10 @@ class App extends Component {
       ? <LoadingCircle />
       : (
         <Switch>
-          <Route exact path='/' >
-            <PageOrLogin>
-              <HomePage />
-            </PageOrLogin>
-          </Route>
-          <Route path='/question/:questionId'>
-            <PageOrLogin>
-              <QuestionPage />
-            </PageOrLogin>
-          </Route>
-          <Route path='/add' >
-            <PageOrLogin>
-              <NewQuestionForm />
-            </PageOrLogin>
-          </Route>
-          <Route path='/leaderboard'>
-            <PageOrLogin>
-              <LeaderBoard />
-            </PageOrLogin>
-          </Route>
+          <PrivateRoute exact path='/' component={HomePage} />
+          <PrivateRoute path='/question/:questionId' component={QuestionPage} />
+          <PrivateRoute path='/add' component={NewQuestionForm} />
+          <PrivateRoute path='/leaderboard' component={LeaderBoard} />
           <Route>
             <NotFound />
           </Route>
