@@ -7,11 +7,18 @@ import './NewQuestionForm.scss'
 
 const FIELD_OPTION_ONE = 'optionOneText'
 const FIELD_OPTION_TWO = 'optionTwoText'
+const ERROR_MISSING_OPTION = 'ERROR_MISSING_OPTION'
+const ERROR_REPEATED_OPTION = 'ERROR_REPEATED_OPTION'
 
 function NewQuestionForm({ dispatch, history }) {
 
   const [isLoading, setIsLoading] = useState(false)
-  const [showMissingOptionError, setShowMissingOptionError] = useState(false)
+
+  const [shownError, setShownError] = useState(null)
+  const errorTexts = {
+    [ERROR_MISSING_OPTION]: 'Both options are required. Please fill them and try again.',
+    [ERROR_REPEATED_OPTION]: 'Options cannot have the same text. Please change one of them.',
+  }
 
   const [formValue, setFormValue] = useState({
     [FIELD_OPTION_ONE]: '',
@@ -24,13 +31,19 @@ function NewQuestionForm({ dispatch, history }) {
   })
 
   const handleButtonWasClicked = () => {
-    if (!(formValue[FIELD_OPTION_ONE] && formValue[FIELD_OPTION_TWO])) {
-      setShowMissingOptionError(true)
+    const optionOne = formValue[FIELD_OPTION_ONE]
+    const optionTwo = formValue[FIELD_OPTION_TWO]
+
+    if (!(optionOne && optionTwo)) {
+      setShownError(ERROR_MISSING_OPTION)
+      setIsLoading(false)
+    } else if (optionOne === optionTwo) {
+      setShownError(ERROR_REPEATED_OPTION)
       setIsLoading(false)
     } else {
-      setShowMissingOptionError(false)
+      setShownError(null)
       setIsLoading(true)
-      dispatch(handleCreateQuestion(formValue[FIELD_OPTION_ONE], formValue[FIELD_OPTION_TWO], () => history.push('/')))
+      dispatch(handleCreateQuestion(optionOne, optionTwo, () => history.push('/')))
     }
   }
 
@@ -62,9 +75,9 @@ function NewQuestionForm({ dispatch, history }) {
           onChange={handleInputChange} />
 
         {
-          showMissingOptionError && (
+          shownError && (
             <p className='missing-option-error'>
-              Both options are required. Please fill them and try again.
+              {errorTexts[shownError]}
             </p>)
         }
 
