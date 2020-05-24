@@ -18,13 +18,15 @@ Polls can then be voted individually, keeping track of what questions the user h
 
 Using the number of questions answered and created by each user, a live user leader board is created.
 
-## Used technologies
+## Used technologies and external assets
 
 - [React](https://reactjs.org/), including the hooks API not yet covered in this Nanodegree
 - [Redux](https://redux.js.org/) & [React Redux](https://react-redux.js.org/)
 - [Redux Thunk middleware](https://github.com/reduxjs/redux-thunk)
 - [React Router](https://reacttraining.com/react-router/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [People vector created by www.freepik.com](https://www.freepik.com/free-vector/people-avatars_761436.htm)
+- [SpinKit loading indicator](https://tobiasahlin.com/spinkit/)
 
 The project uses a in-memory fake REST API that simulates the network interactions of a real-world web application. 
 
