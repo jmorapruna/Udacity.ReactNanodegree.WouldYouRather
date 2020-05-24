@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Would you rather...
+
+This project is part of the Udacity React Nanodegree.
+
+The project has been created from scratch using [Create React App](https://github.com/facebookincubator/create-react-app).
+
+## Used technologies
+
+- [React](https://reactjs.org/), including the hooks API 
+- [Redux](https://redux.js.org/) & [React Redux](https://react-redux.js.org/)
+- [Redux Thunk middleware](https://github.com/reduxjs/redux-thunk)
+- [React Router](https://reacttraining.com/react-router/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+## TL;DR
+
+To get started developing right away:
+
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
 
 ## Available Scripts
 
