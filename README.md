@@ -2,22 +2,77 @@
 
 This project is part of the Udacity React Nanodegree.
 
-The project has been created from scratch using [Create React App](https://github.com/facebookincubator/create-react-app).
+Its purpose is to apply the learned concepts in the Nanodegree program, including React development, front-end state management with Redux, ES6+ concepts, etc.
+
+I also took the liberty of making and implementing my own mobile-first UI design.
+
+## Functional description
+
+This is a quiz app where players can login and vote in different polls.
+
+The app lets you choose a user from a predefined list and login.
+
+Users can create two-choice "Would you rather *A* or *B*" polls.
+
+Polls can then be voted individually, keeping track of what questions the user has answered and which ones hasn't.
+
+Using the number of questions answered and created by each user, a live user leader board is created.
 
 ## Used technologies
 
-- [React](https://reactjs.org/), including the hooks API 
+- [React](https://reactjs.org/), including the hooks API not yet covered in this Nanodegree
 - [Redux](https://redux.js.org/) & [React Redux](https://react-redux.js.org/)
 - [Redux Thunk middleware](https://github.com/reduxjs/redux-thunk)
 - [React Router](https://reacttraining.com/react-router/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 
+The project uses a in-memory fake REST API that simulates the network interactions of a real-world web application. 
+
+For this reason, data changes are not persisted. The initial data of the application can be found [here](https://github.com/udacity/reactnd-project-would-you-rather-starter).
+
+The project has been created from scratch using [Create React App](https://github.com/facebookincubator/create-react-app).
+
 ## TL;DR
 
 To get started developing right away:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+* Install all project dependencies with `npm install`
+* Start the development server with `npm start`
+
+## Screenshots
+
+### Answering a poll
+![Question](screenshots/question.png?raw=true)
+
+### Viewing poll results
+![Answered question](screenshots/answered-question.png?raw=true)
+
+### Home: viewing unanswered polls
+![Home: unanswered questions](screenshots/home-unanswred.png?raw=true)
+
+### Home: viewing answered polls
+![Home: answered questions](screenshots/home-answred.png?raw=true)
+
+### Home: adding a new poll
+![Add a question](screenshots/add-question.png?raw=true)
+
+### Leader board
+![Leader board](screenshots/leader-board.png?raw=true)
+
+### Login
+![Login](screenshots/login.png?raw=true)
+
+### Login: selecting a user
+![Login: selecting a user](screenshots/login-selecting-user.png?raw=true)
+
+### Login: a user is selected
+![Login: selected user](screenshots/login-selected-user.png?raw=true)
+
+### 404: Question (poll) not found
+![404: Question not found](screenshots/404-question.png?raw=true)
+
+### 404: Page not found
+![404: Page not found](screenshots/404-page.png?raw=true)
 
 ## Available Scripts
 
